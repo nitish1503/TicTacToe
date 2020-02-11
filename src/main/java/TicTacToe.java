@@ -1,3 +1,5 @@
+import Exception.InvalidMoveExcception;
+
 public class TicTacToe {
     private Move[][] grid;
 
@@ -5,7 +7,10 @@ public class TicTacToe {
         this.grid = grid;
     }
 
-    public void move(int x, int y, Move move) {
-        grid[x][y] = move;
+    public void move(int x, int y, Move move) throws InvalidMoveExcception {
+        if (grid[x][y] == null)
+            grid[x][y] = move;
+        else
+            throw new InvalidMoveExcception();
     }
 }
