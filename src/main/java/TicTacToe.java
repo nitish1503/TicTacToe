@@ -5,7 +5,7 @@ public class TicTacToe {
         this.grid = grid;
     }
 
-    public void move(int x, int y) {
-        grid[x][y] = 'X';
+    public void move(int x, int y, char move) {
+        grid[x][y] = move;
     }
 }
