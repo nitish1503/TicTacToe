@@ -2,37 +2,24 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import Exception.InvalidMoveExcception;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 class TicTacToeTest {
 
     @Test
-    void shouldPerformXMove() throws InvalidMoveExcception {
-        Move[][] grid = new Move[3][3];
+    void shouldShowPlayerAAsWinner() throws InvalidMoveExcception {
+        Grid grid = mock(Grid.class);
         TicTacToe ticTacToe = new TicTacToe(grid);
+        Player playerO = mock(Player.class);
+        Player playerX = mock(Player.class);
+        when(grid.checkStatus()).thenReturn(GameStatus.PLAYER_X_WIN);
+        when(playerX.toMove()).thenReturn(new Position(0, 0, Move.X), new Position(0, 1, Move.X), new Position(0, 2, Move.X));
+        when(playerO.toMove()).thenReturn(new Position(1, 0, Move.O), new Position(1, 1, Move.O), new Position(1, 2, Move.O));
 
-        ticTacToe.move(0, 0, Move.X);
+        ticTacToe.play(playerX, playerO);
 
-        Assertions.assertEquals(Move.X, grid[0][0]);
-    }
-
-    @Test
-    void shouldPerformOMove() throws InvalidMoveExcception {
-        Move[][] grid = new Move[3][3];
-        TicTacToe ticTacToe = new TicTacToe(grid);
-
-        ticTacToe.move(0, 0, Move.O);
-
-        Assertions.assertEquals(Move.O, grid[0][0]);
-    }
-
-    @Test
-    void shouldPerformMoveAtValidPositionOnly() throws InvalidMoveExcception {
-        Move[][] grid = new Move[3][3];
-        TicTacToe ticTacToe = new TicTacToe(grid);
-        ticTacToe.move(0, 0, Move.O);
-
-        Assertions.assertThrows(InvalidMoveExcception.class, () -> ticTacToe.move(0, 0, Move.O));
-
-
+        Assertions.assertEquals(GameStatus.PLAYER_X_WIN, ticTacToe.getGameStatus());
     }
 }
