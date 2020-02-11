@@ -5,22 +5,22 @@ class TicTacToeTest {
 
     @Test
     void shouldPerformXMove() {
-        char[][] grid = new char[3][3];
+        Move[][] grid = new Move[3][3];
         TicTacToe ticTacToe = new TicTacToe(grid);
 
-        ticTacToe.move(0, 0, 'X');
+        ticTacToe.move(0, 0, Move.X);
 
-        Assertions.assertEquals('X', grid[0][0]);
+        Assertions.assertEquals(Move.X, grid[0][0]);
     }
 
     @Test
     void shouldPerformOMove() {
-        char[][] grid = new char[3][3];
+        Move[][] grid = new Move[3][3];
         TicTacToe ticTacToe = new TicTacToe(grid);
 
-        ticTacToe.move(0, 0, 'O');
+        ticTacToe.move(0, 0, Move.O);
 
-        Assertions.assertEquals('O', grid[0][0]);
+        Assertions.assertEquals(Move.O, grid[0][0]);
     }
 
 }

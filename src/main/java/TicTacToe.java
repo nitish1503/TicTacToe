@@ -1,11 +1,11 @@
 public class TicTacToe {
-    private char[][] grid;
+    private Move[][] grid;
 
-    public TicTacToe(char[][] grid) {
+    public TicTacToe(Move[][] grid) {
         this.grid = grid;
     }
 
-    public void move(int x, int y, char move) {
+    public void move(int x, int y, Move move) {
         grid[x][y] = move;
     }
 }
